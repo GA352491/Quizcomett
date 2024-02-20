@@ -1,0 +1,31 @@
+[all:vars]
+vm=0
+user=ubuntu
+django_requirements_file=requirements.txt
+django_settings="settings"
+letsencrypt_email=backend@commet.com
+project_namespace={{ project_name }}-{{ deploy_environment }}
+project_path=/home/ubuntu/{{ deploy_environment }}/commet-backend
+venv_path=/home/ubuntu/{{ deploy_environment }}/commet-venv
+py3=/home/ubuntu/{{ deploy_environment }}/commet-venv/bin/python3
+
+[dev]
+34.234.76.125
+
+[dev:vars]
+deploy_environment=dev
+use_letsencrypt=True
+domain_name=34.234.76.125
+repo_version=deploy
+asgi_workers=2
+
+
+[prod]
+app.ecomet.com
+
+[prod:vars]
+deploy_environment=prod
+use_letsencrypt=False
+domain_name=app.commet.com
+repo_version=prod
+asgi_workers=4

@@ -33,7 +33,7 @@ jobs:
             ansible-playbook -i provisioner/hosts provisioner/site.yml --limit=$DEPLOY_ENV --tags=deploy  -c local
 
   deploy-prod:
-    # TODO: Uncomment following line to auto-deploy on stg
+
     # Due to Anthem restrictions this is now close.
     #if: ${{ github.ref == 'no_auto_deploy_for_prod' }}
     if: ${{ github.ref == 'refs/heads/prod' }}

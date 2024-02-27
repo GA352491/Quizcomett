@@ -10,7 +10,7 @@ venv_path=/home/ubuntu/{{ deploy_environment }}/exam-venv
 py3=/home/ubuntu/{{ deploy_environment }}/exam-venv/bin/python3
 
 [dev]
-34.234.76.125
+54.211.64.182
 
 [dev:vars]
 deploy_environment=dev

@@ -14,7 +14,7 @@ jobs:
       - name: Deploy to Dev
         uses: appleboy/ssh-action@master
         with:
-          host: ""
+          host: 54.211.64.182
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY_DEV }}
           script: |

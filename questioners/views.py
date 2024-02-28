@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView, Response
 from drf_yasg.utils import swagger_auto_schema
 from accounts.models import CustomUser
-from questioners.models import Question
-from questioners.serializers import QuestionSerializer
+from questioners.models import Question, Category
+from questioners.serializers import QuestionSerializer, CategorySerializer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
 from rest_framework import status
@@ -32,11 +32,18 @@ class QuestionEachAPI(APIView, MyPageNumberPagination):
     page_size = 1
     serializer_class = QuestionSerializer
 
-    def get(self, request, format=None):
+    def get(self, request, category, format=None):
         try:
-            questions_objs = Question.objects.all()
+            questions_objs = Question.objects.filter(category=category)
             results = self.paginate_queryset(questions_objs, request, view=self)
             questionsserializer = self.serializer_class(results, many=True)
         except Exception as e:
             return Response(str(e))
         return self.get_paginated_response(questionsserializer.data)
+
+
+class CategoryAPI(APIView):
+    def get(self, request):
+        categories = Category.objects.all()
+        categoryserializer = CategorySerializer(categories, many=True)
+        return Response(categoryserializer.data)

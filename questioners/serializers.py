@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from questioners.models import Question, Answer
+from questioners.models import Question, Answer, Category
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -29,3 +29,9 @@ class QuestionSerializer(serializers.ModelSerializer):
         if obj.img:
             s = 'http://127.0.0.1:8000' + obj.img.url
             return s
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'

@@ -17,6 +17,7 @@ class BaseModel(models.Model):
 
 class Category(BaseModel):
     category_name = models.CharField(max_length=100, blank=True, null=True)
+    time_frame = models.TimeField(blank=True, null=True)
 
     def __str__(self):
         return self.category_name
@@ -24,6 +25,7 @@ class Category(BaseModel):
 
 class Question(BaseModel):
     category = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
+    question_type = models.CharField(max_length=100, blank=True, null=True)
     img = models.ImageField(upload_to='question_images', null=True, blank=True)
     question = models.TextField(blank=True, null=True)
     sub_question = models.TextField(blank=True, null=True)

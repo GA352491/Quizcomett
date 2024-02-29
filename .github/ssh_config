@@ -1,7 +1,7 @@
-Host 34.234.76.125
+Host 54.211.64.182
     user ubuntu
 
 
-Host app.mybeaconwellbeing.com
-    hostname 18.253.135.190
+Host app.commet.com
+    hostname 54.211.64.182
     user ubuntu
